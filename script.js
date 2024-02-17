@@ -17,10 +17,15 @@ class SuperMath{
         const result = this.calculate(obj.X, obj.Y, obj.znak);
         if(isNaN(result) || result === undefined){
             alert(`Помилка. Ви ввели некоректні дані.`)
+            this.input();
         }else{
-            alert(`Ваш результат: ${result}`);
+            const confirmOperation = confirm(`Ви впевнені, що хочете виконати дію ${obj.X} ${obj.znak} ${obj.Y}? Якщо так - натисніть OK, якщо ні - скасуйте вашу дію.`)
+            if(confirmOperation === true){
+                alert(`Ваш результат: ${result}`);
+            }else{
+                this.input();
+            }
         }
-        this.input();
     }
 
     calculate(X, Y, znak){
@@ -58,6 +63,8 @@ class SuperMath{
 
         if(isNaN(newX) || isNaN(newY)){
             alert(`Введіть число, будь ласка!`);
+            this.input();
+            return;
         }
 
         const obj = {X: newX, Y: newY, znak: newZnak};
